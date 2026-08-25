@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" default-locale="en-US">
+  <info>
+    <title>Trends in Sciences (Walailak University)</title>
+    <title-short>Trends Sci</title-short>
+    <id>http://www.zotero.org/styles/trends-in-sciences-walailak</id>
+    <link href="https://tis.wu.ac.th/" rel="self"/>
+    <updated>2026-08-25T00:00:00+00:00</updated>
+  </info>
+
+  <locale xml:lang="en">
+    <terms>
+      <term name="page-range-delimiter">-</term>
+      <term name="open-quote">“</term>
+      <term name="close-quote">”</term>
+      <term name="and">and</term>
+    </terms>
+  </locale>
+
+  <citation collapse="citation-number" delimiter=",">
+    <layout prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+
+  <bibliography et-al-min="999" et-al-use-first="999" second-field-align="flush">
+    <layout suffix=".">
+      <text variable="citation-number" prefix="[" suffix="] "/>
+      <choose>
+        <if type="article-journal" match="any">
+          <names variable="author" suffix=". ">
+            <name initialize-with=" " name-as-sort-order="all" sort-separator=" " and="text"/>
+          </names>
+          <text variable="title" suffix=". "/>
+          <text variable="container-title" font-style="italic" suffix=" "/>
+          <date variable="issued" suffix="; ">
+            <date-part name="year"/>
+          </date>
+          <group delimiter="">
+            <text variable="volume"/>
+            <text variable="issue" prefix="(" suffix=")"/>
+          </group>
+          <text variable="page" prefix=", "/>
+          <text variable="DOI" prefix=". https://doi.org/" />
+        </if>
+
+        <else-if type="book" match="any">
+          <names variable="author" suffix=". ">
+            <name initialize-with=" " name-as-sort-order="all" sort-separator=" " and="text"/>
+          </names>
+          <text variable="title" font-style="italic" suffix=". "/>
+          <text variable="volume" prefix="Vol " suffix=". " />
+          <group delimiter=", ">
+            <text variable="publisher"/>
+            <text variable="publisher-place"/>
+          </group>
+          <date variable="issued" prefix=", ">
+            <date-part name="year"/>
+          </date>
+          <text variable="page" prefix=", p. "/>
+        </else-if>
+
+        <else-if type="chapter" match="any">
+          <names variable="author" suffix=". ">
+            <name initialize-with=" " name-as-sort-order="all" sort-separator=" " and="text"/>
+          </names>
+          <text variable="title" suffix=". "/>
+          <text value="In: " />
+          <names variable="editor" suffix=" (Ed.). ">
+            <name initialize-with=" " name-as-sort-order="all" sort-separator=" " and="text"/>
+          </names>
+          <text variable="container-title" font-style="italic" suffix=". "/>
+          <text variable="edition" suffix=" ed. "/>
+          <group delimiter=", ">
+            <text variable="publisher"/>
+            <text variable="publisher-place"/>
+          </group>
+          <date variable="issued" prefix=", ">
+            <date-part name="year"/>
+          </date>
+          <text variable="page" prefix=", p. "/>
+        </else-if>
+
+        <else-if type="paper-conference" match="any">
+          <names variable="author" suffix=". ">
+            <name initialize-with=" " name-as-sort-order="all" sort-separator=" " and="text"/>
+          </names>
+          <text variable="title" suffix=". "/>
+          <text variable="event-title" suffix=". In: Proceedings of the " />
+          <date variable="issued" prefix="" suffix=". ">
+            <date-part name="year"/>
+          </date>
+          <text variable="event-place" suffix=". " />
+          <text variable="page" prefix="p. "/>
+        </else-if>
+
+        <else-if type="thesis" match="any">
+          <names variable="author" suffix=". ">
+            <name initialize-with=" " name-as-sort-order="all" sort-separator=" " and="text"/>
+          </names>
+          <date variable="issued" prefix="" suffix=", ">
+            <date-part name="year"/>
+          </date>
+          <text variable="title" font-style="italic" suffix=". "/>
+          <text variable="genre" suffix=". "/>
+          <group delimiter=", ">
+            <text variable="publisher"/>
+            <text variable="publisher-place"/>
+          </group>
+        </else-if>
+
+        <else-if type="patent" match="any">
+          <names variable="author" suffix=". ">
+            <name initialize-with=" " name-as-sort-order="all" sort-separator=" " and="text"/>
+          </names>
+          <date variable="issued" prefix="" suffix=", ">
+            <date-part name="year"/>
+          </date>
+          <text variable="title" suffix=", "/>
+          <text variable="number" suffix="."/>
+        </else-if>
+
+        <else-if type="webpage" match="any">
+          <text variable="title" suffix=", "/>
+          <text variable="URL" prefix="Available at: " suffix=", "/>
+          <date variable="accessed">
+            <text value="accessed "/>
+            <date-part name="month" form="long" suffix=" "/>
+            <date-part name="year"/>
+          </date>
+        </else-if>
+
+        <else>
+          <names variable="author" suffix=". ">
+            <name initialize-with=" " name-as-sort-order="all" sort-separator=" " and="text"/>
+          </names>
+          <date variable="issued" suffix=", ">
+            <date-part name="year"/>
+          </date>
+          <text variable="title" suffix=". "/>
+          <text variable="container-title" font-style="italic" suffix=". "/>
+          <text variable="volume" suffix=": "/>
+          <text variable="page"/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
