@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" default-locale="en-US">
+  <info>
+    <title>Trends in Sciences (Walailak University)</title>
+    <title-short>Trends Sci</title-short>
+    <id>http://www.zotero.org/styles/trends-in-sciences-walailak</id>
+    <link href="https://tis.wu.ac.th/" rel="self"/>
+    <summary>Custom numeric citation style based on the Trends in Sciences author guidelines.</summary>
+    <updated>2026-08-25T04:00:00+00:00</updated>
+  </info>
+
+  <locale xml:lang="en">
+    <terms>
+      <term name="and">and</term>
+      <term name="editor" form="short">Ed.</term>
+      <term name="page-range-delimiter">-</term>
+    </terms>
+  </locale>
+
+  <macro name="author">
+    <names variable="author">
+      <name initialize="true" initialize-with=" " delimiter=", " and="text"
+            delimiter-precedes-last="never"/>
+    </names>
+  </macro>
+
+  <macro name="editor">
+    <names variable="editor">
+      <name initialize="true" initialize-with=" " delimiter=", " and="text"
+            delimiter-precedes-last="never"/>
+    </names>
+  </macro>
+
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+
+  <macro name="journal">
+    <text variable="container-title" form="short" font-style="italic"/>
+  </macro>
+
+  <macro name="volume-issue">
+    <group delimiter="">
+      <text variable="volume"/>
+      <text variable="issue" prefix="(" suffix=")"/>
+    </group>
+  </macro>
+
+  <macro name="journal-entry">
+    <text macro="author" suffix=". "/>
+    <text variable="title" suffix=". "/>
+    <text macro="journal" suffix=" "/>
+    <text macro="year" suffix="; "/>
+    <text macro="volume-issue"/>
+    <choose>
+      <if variable="page">
+        <text variable="page" prefix=", "/>
+      </if>
+      <else-if variable="DOI">
+        <text variable="DOI" prefix=". https://doi.org/"/>
+      </else-if>
+    </choose>
+  </macro>
+
+  <macro name="book-entry">
+    <text macro="author" suffix=". "/>
+    <text variable="title" font-style="italic" suffix=". "/>
+    <text variable="volume" prefix="Vol " suffix=". "/>
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+    <text macro="year" prefix=", "/>
+    <text variable="page" prefix=", p. "/>
+  </macro>
+
+  <macro name="chapter-entry">
+    <text macro="author" suffix=". "/>
+    <text variable="title" suffix=". "/>
+    <text value="In: "/>
+    <text macro="editor" suffix=" (Ed.). "/>
+    <text variable="container-title" font-style="italic"/>
+    <text variable="edition" prefix=". " suffix=" ed."/>
+    <group prefix=". " delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+    <text macro="year" prefix=", "/>
+    <text variable="page" prefix=", p. "/>
+  </macro>
+
+  <macro name="proceedings-entry">
+    <text macro="author" suffix=". "/>
+    <text variable="title" suffix=". "/>
+    <text variable="container-title" suffix=". "/>
+    <text value="In: Proceedings of the "/>
+    <text variable="event-title" suffix=", "/>
+    <text variable="event-place" suffix=". "/>
+    <text macro="year" suffix=", "/>
+    <text variable="page" prefix="p. "/>
+  </macro>
+
+  <macro name="thesis-entry">
+    <text macro="author" suffix=". "/>
+    <text macro="year" suffix=", "/>
+    <text variable="title" font-style="italic" suffix=". "/>
+    <text variable="genre" suffix=". "/>
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+
+  <macro name="patent-entry">
+    <text macro="author" suffix=". "/>
+    <text macro="year" suffix=", "/>
+    <text variable="title" suffix=", "/>
+    <text variable="number"/>
+  </macro>
+
+  <macro name="web-entry">
+    <text variable="title" suffix=", "/>
+    <text variable="URL" prefix="Available at: " suffix=", "/>
+    <date variable="accessed" prefix="accessed ">
+      <date-part name="month" form="long" suffix=" "/>
+      <date-part name="year"/>
+    </date>
+  </macro>
+
+  <citation collapse="citation-number" after-collapse-delimiter=",">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+
+  <bibliography et-al-min="999" et-al-use-first="999" second-field-align="flush">
+    <layout suffix=".">
+      <text variable="citation-number" prefix="[" suffix="] "/>
+      <choose>
+        <if type="article-journal">
+          <text macro="journal-entry"/>
+        </if>
+        <else-if type="book">
+          <text macro="book-entry"/>
+        </else-if>
+        <else-if type="chapter">
+          <text macro="chapter-entry"/>
+        </else-if>
+        <else-if type="paper-conference">
+          <text macro="proceedings-entry"/>
+        </else-if>
+        <else-if type="thesis">
+          <text macro="thesis-entry"/>
+        </else-if>
+        <else-if type="patent">
+          <text macro="patent-entry"/>
+        </else-if>
+        <else-if type="webpage">
+          <text macro="web-entry"/>
+        </else-if>
+        <else>
+          <text macro="author" suffix=". "/>
+          <text macro="year" suffix=", "/>
+          <text variable="title" suffix=". "/>
+          <text variable="container-title" form="short" font-style="italic" suffix=" "/>
+          <text macro="volume-issue"/>
+          <text variable="page" prefix=", "/>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
